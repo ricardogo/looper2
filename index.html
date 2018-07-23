@@ -17,27 +17,37 @@
 </head>
 
 <body>
+  <header id="header">
+    <button id="header-export">Export (not working)</button>
+  </header>
   <section id="videos">
     <div id="video1" class="video">
       <video class="video-video" loop autoplay muted></video>
       <button class="video-record"></button>
+      <div class="video-tempo">4</div>
     </div>
     <div id="video2" class="video">
       <video class="video-video" loop autoplay muted></video>
       <button class="video-record"></button>
+      <div class="video-tempo">4</div>
     </div>
     <div id="video3" class="video">
       <video class="video-video" loop autoplay muted></video>
       <button class="video-record"></button>
+      <div class="video-tempo">4</div>
     </div>
     <div id="video4" class="video">
       <video class="video-video" loop autoplay muted></video>
       <button class="video-record"></button>
+      <div class="video-tempo">4</div>
     </div>
   </section>
 
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.4.7/RecordRTC.js"></script>
+  <script src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"></script>
+  <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+  <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
   <script src="js/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
