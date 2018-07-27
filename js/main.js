@@ -25,7 +25,6 @@
   var exportButton = document.querySelector("#header-export");
 
 
-
   /*
    * Event Listeners
    */
@@ -64,6 +63,12 @@
   var recorder;
 
   function record(video, count) {
+    // Ask for permission upfront
+    var promise = navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true
+    });
+
     startCount(video, count);
     if(!beatPlaying) startBeat();
   }
