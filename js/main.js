@@ -56,12 +56,6 @@
     this.classList.add("hidden");
   });
 
-  exportButton.addEventListener("click", function() {
-    var file = new File([video1.src], "test1.mp4", {type: "video/mp4"});
-    FileSaver.saveAs(file);
-  });
-
-
   /*
    * Video recording
    */
