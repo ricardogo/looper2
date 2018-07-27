@@ -14,13 +14,19 @@
       count3 = document.querySelector("#video3 .video-tempo"),
       count4 = document.querySelector("#video4 .video-tempo");
 
+  var pulse1 = document.querySelector("#video1 .video-pulse"),
+      pulse2 = document.querySelector("#video2 .video-pulse"),
+      pulse3 = document.querySelector("#video3 .video-pulse"),
+      pulse4 = document.querySelector("#video4 .video-pulse");
+
   var tempo = 100,
       beatPos = 1,
       beatPlaying = false,
       countPos = 4,
       counting = false,
       countVideo = null,
-      countCount = null;
+      countCount = null,
+      countPulse = null;
 
   var exportButton = document.querySelector("#header-export");
 
@@ -31,22 +37,22 @@
 
 
   button1.addEventListener("click", function() {
-    record(video1, count1);
+    record(video1, count1, pulse1);
     this.classList.add("hidden");
   });
 
   button2.addEventListener("click", function() {
-    record(video2, count2);
+    record(video2, count2, pulse2);
     this.classList.add("hidden");
   });
 
   button3.addEventListener("click", function() {
-    record(video3, count3);
+    record(video3, count3, pulse3);
     this.classList.add("hidden");
   });
 
   button4.addEventListener("click", function() {
-    record(video4, count4);
+    record(video4, count4, pulse4);
     this.classList.add("hidden");
   });
 
@@ -62,14 +68,14 @@
 
   var recorder;
 
-  function record(video, count) {
+  function record(video, count, pulse) {
     // Ask for permission upfront
     var promise = navigator.mediaDevices.getUserMedia({
       audio: true,
       video: true
     });
 
-    startCount(video, count);
+    startCount(video, count, pulse);
     if(!beatPlaying) startBeat();
   }
 
@@ -92,6 +98,8 @@
         setTimeout(function() {
           recorder.stopRecording(function() {
             stopRecordingCallback(video);
+            countPulse.classList.remove("visible");
+            countPulse = null;
           });
         }, 8*1000*60/tempo);
     });
@@ -136,10 +144,13 @@
      beatPlaying = false;
    }
 
-   function startCount(video, count) {
+   function startCount(video, count, pulse) {
      counting = true;
      countVideo = video;
      countCount = count;
+     countPulse = pulse;
+     pulse.style.animationDuration = 1000*60/tempo + "ms";
+     pulse.classList.add("visible");
      count.classList.add("visible");
    }
 
